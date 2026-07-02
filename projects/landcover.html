@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Land Cover Classification of Utrecht ~ GIS Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #F9F9F6;       
+      --sage-light: #E6ECE9;     
+      --sage-med: #BDC9C1;       
+      --sage-dark: #4A5850;      
+      --text-dark: #2F3532;      
+      --white: #FFFFFF;
+      --radius: 20px;            
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
+    .container { max-width: 950px; margin: 0 auto; padding: 0 24px; }
+    
+    header { background-color: rgba(249, 249, 246, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(189, 201, 193, 0.3); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.35rem; color: var(--sage-dark); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--text-dark); margin-left: 28px; font-weight: 500; font-size: 0.95rem; }
+
+    .project-hero { padding: 80px 0 60px 0; background: linear-gradient(140deg, #F0F4F2 0%, #E6ECE9 100%); border-bottom: 1px solid var(--sage-light); text-align: center; }
+    .project-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--sage-dark); margin-bottom: 16px; line-height: 1.2; }
+    .project-meta { font-size: 1.05rem; color: #525C57; max-width: 700px; margin: 0 auto 24px auto; }
+    .back-btn { display: inline-block; text-decoration: none; color: var(--sage-dark); font-weight: 600; font-size: 0.95rem; margin-bottom: 20px; }
+
+    .content-section { padding: 60px 0 100px 0; }
+    
+    /* 2x2 Image Layout Styling */
+    .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 44px; }
+    @media (max-width: 768px) { .image-grid { grid-template-columns: 1fr; } }
+    
+    .media-card { background: var(--white); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(189, 201, 193, 0.4); box-shadow: 0 10px 30px rgba(74, 88, 80, 0.04); text-align: center; }
+    .media-card img { max-width: 100%; height: auto; border-radius: calc(var(--radius) - 8px); }
+    .caption { font-size: 0.9rem; color: #5E6962; margin-top: 12px; font-style: italic; }
+
+    .qa-box { background: var(--white); padding: 40px; border-radius: var(--radius); border: 1px solid rgba(189, 201, 193, 0.3); margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
+    .qa-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--sage-dark); margin-bottom: 16px; }
+    .qa-box p { margin-bottom: 16px; color: var(--text-dark); }
+    .qa-box p:last-child { margin-bottom: 0; }
+
+    footer { background-color: var(--sage-dark); color: var(--sage-light); text-align: center; padding: 35px 0; font-size: 0.9rem; margin-top: 60px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="../index.html" class="logo">Maxine Hekster</a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#maps">Maps</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="../index.html#maps" class="back-btn">← Back to Portfolio</a>
+      <h1>Land Cover Classification of Utrecht</h1>
+      <p class="project-meta">
+        Supervised and unsupervised, pixel based and object based classification of Science Park Utrecht in ArcGIS.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+
+      <div class="image-grid">
+        <div class="media-card">
+          <img src="../images/05a-unsupervised-pixel.jpg" alt="Unsupervised pixel based classification of Utrecht">
+          <div class="caption" style="font-weight: 600;">Unsupervised Pixel Based Classification</div>
+        </div>
+        <div class="media-card">
+          <img src="../images/05b-supervised-pixel.jpg" alt="Supervised pixel based classification of Utrecht">
+          <div class="caption" style="font-weight: 600;">Supervised Pixel Based Classification</div>
+        </div>
+        <div class="media-card">
+          <img src="../images/05c-unsupervised-object.jpg" alt="Unsupervised object based classification of Utrecht">
+          <div class="caption" style="font-weight: 600;">Unsupervised Object Based Classification</div>
+        </div>
+        <div class="media-card">
+          <img src="../images/05d-spectral-profile.jpg" alt="Spectral profile chart across four land cover types">
+          <div class="caption">Spectral profiles for agriculture, city, highway, and housing across Sentinel-2 bands.</div>
+        </div>
+      </div>
+
+      <div class="qa-box">
+        <h3>The value of automated land cover classification</h3>
+        <p>
+          Automated land cover classification allows large areas of the Earth to be mapped quickly and
+          consistently using spectral information captured by satellite sensors, supporting work such as
+          tracking urban expansion, or environmental tasks that aren't able to be completed as efficiently using manual methods. 
+          Supervised classification requires the analyst to define training samples before the algorithm runs, 
+          learning the spectral signature of each class and assigning every other pixel to the class it most closely resembles. 
+          Unsupervised classification works the opposite way, grouping pixels with similar spectral values into clusters without 
+          any form of user input.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>Spatial resolution</h3>
+        <p>
+          Each pixel in this composite measured roughly 60.67m per side, notably coarser than Sentinel-2's
+          native resolution of 10 to 20m, suggesting the composite was built from coarser bands or resampled
+          during processing.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>Strengths, weaknesses, and anomalies</h3>
+        <p>
+          The unsupervised pixel based classification was the fastest to run and needed no prior input, making
+          it the most efficient method, though its output was the messiest, with scattered pink and blue
+          breaking up what would otherwise be uniform areas. However, it still managed to do things such as pick 
+          out the urban core clearly in blue, following the road network outward, without any manual input.
+        </p>
+        <p>
+          The unsupervised object based method was able to fix much of that mess that we saw in the pixel based version. 
+          The same urban core that appeared as scattered blue pixels in the pixel based version instead showed up as more 
+          coherent and clean yellow-green block with smoother edges, a result of object based segmentation grouping pixels 
+          into meaningful patches before classification, making the output easier to interpret visually.
+        </p>
+        <p>
+          The supervised pixel based classification produced the most class rich map, with cream marking
+          the urban core and purple, teal, olive, and rust patches scattered across the rest of the land. This
+          version looked far more scattered overall, partly because of the added class detail. Adding on, though,
+          you also see cream colored patches also showed up within agricultural land, likely individual buildings 
+          bright enough to be classified as urban. The river running through the image was also misclassified in 
+          places, a case of water and impervious surfaces being spectrally confused by the algorithm.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 GIS Student Portfolio | Maxine Hekster
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multicriteria Analysis for Urban Tree Planting ~ GIS Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #F9F9F6;       
+      --sage-light: #E6ECE9;     
+      --sage-med: #BDC9C1;       
+      --sage-dark: #4A5850;      
+      --text-dark: #2F3532;      
+      --white: #FFFFFF;
+      --radius: 20px;            
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.6; }
+    .container { max-width: 950px; margin: 0 auto; padding: 0 24px; }
+    
+    header { background-color: rgba(249, 249, 246, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(189, 201, 193, 0.3); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.35rem; color: var(--sage-dark); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--text-dark); margin-left: 28px; font-weight: 500; font-size: 0.95rem; }
+
+    .project-hero { padding: 80px 0 60px 0; background: linear-gradient(140deg, #F0F4F2 0%, #E6ECE9 100%); border-bottom: 1px solid var(--sage-light); text-align: center; }
+    .project-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--sage-dark); margin-bottom: 16px; line-height: 1.2; }
+    .project-meta { font-size: 1.05rem; color: #525C57; max-width: 700px; margin: 0 auto 24px auto; }
+    .back-btn { display: inline-block; text-decoration: none; color: var(--sage-dark); font-weight: 600; font-size: 0.95rem; margin-bottom: 20px; }
+
+    .content-section { padding: 60px 0 100px 0; }
+    .media-card { background: var(--white); padding: 24px; border-radius: var(--radius); border: 1px solid rgba(189, 201, 193, 0.4); box-shadow: 0 10px 30px rgba(74, 88, 80, 0.04); margin-bottom: 44px; text-align: center; }
+    .media-card img { max-width: 100%; height: auto; border-radius: calc(var(--radius) - 8px); }
+    .caption { font-size: 0.9rem; color: #5E6962; margin-top: 14px; font-style: italic; }
+
+    .qa-box { background: var(--white); padding: 40px; border-radius: var(--radius); border: 1px solid rgba(189, 201, 193, 0.3); margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
+    .qa-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--sage-dark); margin-bottom: 16px; }
+    .qa-box p { margin-bottom: 16px; color: var(--text-dark); }
+    .qa-box p:last-child { margin-bottom: 0; }
+    .muted { font-size: 0.85rem; color: #5E6962; line-height: 1.4; margin-bottom: 12px !important; }
+
+    footer { background-color: var(--sage-dark); color: var(--sage-light); text-align: center; padding: 35px 0; font-size: 0.9rem; margin-top: 60px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="../index.html" class="logo">Maxine Hekster</a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#maps">Maps</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="../index.html#maps" class="back-btn">← Back to Portfolio</a>
+      <h1>Multicriteria Analysis for Urban Tree Planting</h1>
+      <p class="project-meta">
+        A weighted overlay workflow graphic identifying priority sites for tree planting in Hong Kong to reduce urban heat exposure.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+
+      <div class="media-card">
+        <img src="../images/06-mca.jpg" alt="Hong Kong Urban Heat Multicriteria Analysis workflow diagram">
+        <div class="caption">MCA workflow: criteria, data sources, GIS analysis steps, and decision map output. Grey nodes indicate hard exclusions.</div>
+      </div>
+
+      <div class="qa-box">
+        <h3>What is multicriteria analysis?</h3>
+        <p>
+          Multicriteria analysis (MCA) combines several spatial criteria into a single map so that a final
+          decision can account for many factors at once rather than just one. Most urban planning or
+          environmental questions cannot be answered using a single dataset, so MCA offers a solution. A flood
+          map alone, for example, cannot show where buildings are or where pollution is highest. MCA
+          standardizes each criterion onto a common scale, assigns it a relative weight, and merges them into a
+          single output surface.
+        </p>
+        <p>
+          GIS makes this combination possible at a spatial scale. Distance, elevation, air pollution, and
+          population density can each exist as their own layer, letting GIS software reclassify the values of
+          each and combine them using the raster calculator into one output layer. MCA is typically used wherever
+          decisions involve trade-offs between competing values, such as identifying sites for urban development,
+          prioritizing land for conservation, or locating new public transportation or health infrastructure
+          (Malczewski & Jankowski, 2020).
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>The problem</h3>
+        <p>
+          The workflow identifies which neighborhoods in Hong Kong should be prioritized for new trees or
+          greenery to reduce urban heat exposure, focused on areas that need it most rather than areas that are
+          simply easiest to plant. Residents in dense, low vegetation, lower income neighborhoods often experience the
+          worst heat exposure while having the least private outdoor space to fix it themselves. Urban
+          planners need sites that are physically capable of supporting trees, not filled with concrete or
+          underground infrastructure, and likely to produce a real cooling benefit once planted. MCA fits this
+          problem because the best site for a tree is not simply the warmest spot, but the hottest spot that is
+          also feasible to plant and serves the people who need it most.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>The criteria</h3>
+        <p>
+          Seven criteria drive the analysis. Land surface temperature, from thermal satellite bands, is treated
+          as the core issue. Existing vegetation prioritizes areas with little to no greenery, largely
+          overlapping with the urban core. Population density prioritizes higher density areas, since cooling
+          benefits need to reach people. Age and income prioritize areas with more elderly or lower income
+          residents, who are more vulnerable to heat illness and less likely to have air conditioning or the
+          option to leave during a heat wave. Available space and land ownership both act as hard cutoffs,
+          excluding sites with no physical room or no valid access agreement regardless of how well they score
+          elsewhere. Distance from existing green space prioritizes areas farther from a park or street tree,
+          since new green space does more good where nothing is currently nearby.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>The data</h3>
+        <p>
+          This workflow draws on Landsat or Sentinel-2 thermal imagery for surface temperature, the same
+          Sentinel-2 NDVI data used in the vegetation project, population density by district from the Hong
+          Kong Census and Statistics Department, age and income data per district, land use and underground
+          utility records, land ownership records, and a parks and tree inventory from the Leisure and Cultural
+          Services Department. Some of this data may be privatized and harder to access, and age and income data
+          would ideally come at a finer resolution than district level, since district boundaries in a city as
+          dense as Hong Kong can lump wealthier and poorer blocks together. 
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>The GIS workflow</h3>
+        <p>
+          Data preparation starts with reprojecting everything into a shared coordinate system and clipping to
+          the study area, following a similar process to the NDVI project at a larger scale, with thermal and
+          NDVI imagery matched to the same season. Each layer is then reclassified onto the same 1-5 scale so
+          temperature, vegetation, population, vulnerability, and distance from green space can be compared
+          directly, with temperature ideally handled by percentile rather than a fixed degree cutoff given how
+          much climate varies across Hong Kong.
+        </p>
+        <p>
+          Weights are then assigned to each layer, with temperature and vulnerability weighted most heavily,
+          followed by population and distance to green space. Testing different weight combinations helps
+          confirm reliability, since a neighborhood that keeps appearing near the top regardless of weighting is
+          a stronger result than one that flips entirely under small adjustments. Areas where planting is not an
+          option are excluded first, then the remaining classes are combined by multiplying each layer by its
+          weight and summing them into a final map. The output is sorted into priority tiers, symbolized, and
+          sanity-checked against a regular map to confirm no top site lands somewhere unusable, and compared back
+          against the original NDVI map, since a top priority spot that turns out to be one of the greenest areas
+          in the dataset would suggest an error earlier in the process.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>Sources</h3>
+        <p class="muted">
+          Malczewski, J., & Jankowski, P. (2020). Emerging trends and research frontiers in spatial
+          multicriteria analysis. International Journal of Geographical Information Science, 34(7), 1257-1282.
+          https://doi.org/10.1080/13658816.2020.1712403
+        </p>
+        <p class="muted">
+          Rikalović, A., & Cocić, I. (2014). GIS based multi-criteria decision analysis for industrial site
+          selection: The state of the art. Journal of Applied Engineering Science, 12(3), 197-206.
+          https://doi.org/10.5937/jaes12-4938
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 GIS Student Portfolio | Maxine Hekster
+    </div>
+  </footer>
+
+</body>
+</html>

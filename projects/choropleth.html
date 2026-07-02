@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SDG Maternal Mortality Choropleth ~ GIS Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Minimalist Sage Green & Earth Aesthetic Theme Variables --- */
+    :root {
+      --bg-cream: #F9F9F6;       
+      --sage-light: #E6ECE9;     
+      --sage-med: #BDC9C1;       
+      --sage-dark: #4A5850;      
+      --text-dark: #2F3532;      
+      --white: #FFFFFF;
+      --radius: 20px;            
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    .container { max-width: 950px; margin: 0 auto; padding: 0 24px; }
+    
+    header {
+      background-color: rgba(249, 249, 246, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 1px solid rgba(189, 201, 193, 0.3);
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.35rem; color: var(--sage-dark); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--text-dark); margin-left: 28px; font-weight: 500; font-size: 0.95rem; }
+
+    .project-hero { padding: 80px 0 60px 0; background: linear-gradient(140deg, #F0F4F2 0%, #E6ECE9 100%); border-bottom: 1px solid var(--sage-light); text-align: center; }
+    .project-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--sage-dark); margin-bottom: 16px; line-height: 1.2; }
+    .project-meta { font-size: 1.05rem; color: #525C57; max-width: 700px; margin: 0 auto 24px auto; }
+    .back-btn { display: inline-block; text-decoration: none; color: var(--sage-dark); font-weight: 600; font-size: 0.95rem; margin-bottom: 20px; transition: color 0.3s; }
+    .back-btn:hover { color: var(--text-dark); }
+
+    .content-section { padding: 60px 0 100px 0; }
+    .media-card { background: var(--white); padding: 24px; border-radius: var(--radius); border: 1px solid rgba(189, 201, 193, 0.4); box-shadow: 0 10px 30px rgba(74, 88, 80, 0.04); margin-bottom: 44px; text-align: center; }
+    .media-card img { max-width: 100%; height: auto; border-radius: calc(var(--radius) - 8px); }
+    .caption { font-size: 0.9rem; color: #5E6962; margin-top: 14px; font-style: italic; }
+
+    .button { display: inline-block; padding: 12px 28px; background-color: var(--sage-dark); color: var(--white); text-decoration: none; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(74, 88, 80, 0.15); transition: all 0.3s; margin-bottom: 44px; }
+    .button:hover { background-color: var(--text-dark); transform: translateY(-2px); }
+
+    .qa-box { background: var(--white); padding: 40px; border-radius: var(--radius); border: 1px solid rgba(189, 201, 193, 0.3); margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
+    .qa-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--sage-dark); margin-bottom: 16px; }
+    .qa-box p { margin-bottom: 16px; color: var(--text-dark); }
+    .qa-box p:last-child { margin-bottom: 0; }
+    .qa-box a { color: var(--sage-dark); font-weight: 600; }
+
+    footer { background-color: var(--sage-dark); color: var(--sage-light); text-align: center; padding: 35px 0; font-size: 0.9rem; margin-top: 60px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a href="../index.html" class="logo">Maxine Hekster</a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#maps">Maps</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="project-hero">
+    <div class="container">
+      <a href="../index.html#maps" class="back-btn">← Back to Portfolio</a>
+      <h1>SDG Maternal Mortality Choropleth</h1>
+      <p class="project-meta">
+        SDG Indicator 3.1.1, maternal mortality ratio, 2020 data from the UN SDG DataHub. Built in QGIS, rebuilt as an interactive web map with Leaflet.js.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+
+      <div class="media-card">
+        <img src="../images/01-choropleth.jpg" alt="SDG Maternal Mortality Choropleth Map">
+        <div class="caption">Static choropleth built in QGIS, shaded from light to dark red by maternal deaths per 100,000 live births.</div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="../leaflet/choropleth.html" class="button">Open Interactive Map →</a>
+      </div>
+
+      <div class="qa-box">
+        <h3>What the map is showing</h3>
+        <p>
+          SDG Goal 3 aims to ensure healthy lives and promote well being at all ages, and the goal of this map
+          was to visualize SDG Target 3.1. Target 3.1 calls for reducing the global maternal mortality rate to
+          less than 70 per 100,000 live births by 2030. The specific indicator mapped here is SDG Indicator 3.1.1,
+          with data from 2020, sourced from the UN SDG DataHub.
+        </p>
+        <p>
+          The maternal mortality ratio reflects the quality of a country's healthcare system, access to safe
+          childbirth, and gender equity. The map shows stark global inequalities, with areas like Sub-Saharan Africa
+          recording rates well above 500 deaths per 100,000 live births. Higher income countries such
+          as those in Europe and East Asia show rates below 10. Indicator metadata is available from the
+          <a href="https://unstats.un.org/sdgs/metadata/?text=maternal+mortality" target="_blank" rel="noopener">UN Statistics Division</a>.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>What is a choropleth map?</h3>
+        <p>
+          A choropleth map is a type of map where areas like countries or regions are colored based on a data
+          value. For this specific map, the darker the red, the higher the maternal mortality rate in that country. One of the
+          clearest benefits of this map type is the ability to visualize spatial patterns and data quickly and efficiently. In this case
+          the harsh contrast between Sub-Saharan Africa and the rest of the world is highlighted and therefor becomes a focus of this map. 
+          Choropleth maps are also simple for any audience to understand without a deep background in maps or a large explanation.
+        </p>
+        <p>
+          However, every map has its flaws and chloropleth has some noticable ones. Namely, large countries often 
+          visually dominate the map even with a smaller population. Color choice also matters a great deal, since 
+          it can shift the thresholds and make the data appear very different. Furthermore, color is able to tell a story 
+          that perhaps might be accusatory or show them in a negative/false light. Countries with missing data appear
+          blank or grey, which can give a misleading impression of the overall image.
+        </p>
+      </div>
+
+      <div class="qa-box">
+        <h3>Technical skills used and gained</h3>
+        <p>
+          Before this assignment, GIS software and interactive web mapping were both very new to me, so this was
+          a far steeper learning curve than expected. QGIS was used for the first time to join a spreadsheet of UN
+          SDG data to a country shapefile, which required understanding how the data was structured and how
+          tables link through shared attributes. This also meant learning the different file types GIS software
+          uses and how much that affects their capabilities.
+        </p>
+        <p>
+          The basics of Leaflet, a JavaScript library for web maps, were learned alongside editing HTML and
+          JavaScript in Sublime Text to build the interactive version. The mechanics behind Sublime and Leaflet
+          were challenging to pick up, especially with an emphasis on coding, which made it especially rewarding once it came together.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 GIS Student Portfolio | Maxine Hekster
+    </div>
+  </footer>
+
+</body>
+</html>
